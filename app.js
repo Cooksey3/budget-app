@@ -202,6 +202,10 @@ var controller = (function(budgetCtrl, UICtrl) {
         document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
     };
 
+    var updatePercentages = function() {
+    	
+    }
+
     var updateBudget = function() {
 
     	// 1 - Calculate Budget
