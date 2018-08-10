@@ -263,6 +263,14 @@ var UIController = (function() {
 
         },
 
+        changedType: function() {
+        	var fields = document.querySelectorAll(
+        		DOMstrings.inputType + ',' +
+        		DOMstrings.inputDescription + ',' +
+        		DOMstrings.inputValue
+        	)
+        },
+
         getDOMstrings: function() {
             return DOMstrings;
         }
@@ -284,6 +292,8 @@ var controller = (function(budgetCtrl, UICtrl) {
         });
 
         document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
+
+        document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changedType);
     };
 
     var updatePercentages = function() {
