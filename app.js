@@ -162,6 +162,12 @@ var UIController = (function() {
         	return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
     };
 
+    var nodeListForEach = function(list, callback) {
+   		for(var i = 0; i < list.length; i++) {
+    		callback(list[i], i);
+    	};
+    }
+
     return {
         getInput: function() {
             return {
@@ -233,12 +239,6 @@ var UIController = (function() {
 
         	var fields = document.querySelectorAll(DOMstrings.expensesPercLabel);
 
-        	var nodeListForEach = function(list, callback) {
-        		for(var i = 0; i < list.length; i++) {
-        			callback(list[i], i);
-        		};
-        	}
-
         	nodeListForEach(fields, function(current, index) {
         		if (percentages[index] > 0) {
         			current.textContent = percentages[index] + '%';
@@ -268,7 +268,12 @@ var UIController = (function() {
         		DOMstrings.inputType + ',' +
         		DOMstrings.inputDescription + ',' +
         		DOMstrings.inputValue
-        	)
+        	);
+
+        	noreListForEach(fields, function(cur) {
+        		cur.classList.toggle('red-focus');
+        	})
+
         },
 
         getDOMstrings: function() {
